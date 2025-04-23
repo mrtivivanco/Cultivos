@@ -18,9 +18,11 @@ public abstract class ElementoAgricola {
 
  // Estos son los atributos comunes que tendrán todos los elementos agrícolas.
  // Los marcamos como "protected" para que puedan ser usados por las clases hijas, asi pueden acceder directamente a estos valores
+ //Solo creamos el molde, 
  protected String nombre; 
  protected String fecha;
  protected String estado;
+//hasta ahora hemos creado la clase con sus atributos
 
 // Este es el constructor.
  // Este método se ejecuta automáticamente cuando se crea un objeto hijo de esta clase.
