@@ -63,4 +63,12 @@ public class MenuPrincipal {
         System.out.println("1. Listar cultivos");
         System.out.println("2. Crear nuevo cultivo");
         System.out.println("3. Eliminar cultivo");
-        
+        System.out.println("4. Editar cultivo");
+        System.out.println("5. Listar parcelas");
+        System.out.println("6. Agregar parcela");
+        System.out.println("7. Eliminar parcela");
+        System.out.println("8. Editar parcela");
+        System.out.println("9. Salir");
+    }
+}
+
