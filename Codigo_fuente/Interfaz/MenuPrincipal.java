@@ -57,3 +57,10 @@ public class MenuPrincipal {
 
         } while (opcion != 9);
     }
+
+    private void mostrarMenu() {
+        System.out.println("\n=== MENÚ PRINCIPAL ===");
+        System.out.println("1. Listar cultivos");
+        System.out.println("2. Crear nuevo cultivo");
+        System.out.println("3. Eliminar cultivo");
+        
