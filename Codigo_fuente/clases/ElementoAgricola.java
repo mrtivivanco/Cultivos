@@ -1,38 +1,31 @@
-package Codigo_fuente.clases;
-
-public class ElementoAgricola {
-    
-}
-//Clase abstracta, clase que NO se puede usar directamente, pero que sirve como base para otras clases. (Otras clases heredan de ella)
+// Clase abstracta, clase que NO se puede usar directamente, pero que sirve como base para otras clases.
+// (Otras clases heredan de ella).
 // Declaramos el paquete donde está esta clase.
 // Esto ayuda a Java a saber dónde encontrarla.
-package clases;
-
+package Codigo_fuente.clases;
 
 // Creamos una clase abstracta llamada ElementoAgricola
 // Las clases abstractas no se pueden usar directamente.
 // Sirven como base para que otras clases hereden de ella.
 public abstract class ElementoAgricola {
-}
 
+    // Estos son los atributos comunes que tendrán todos los elementos agrícolas.
+    // Los marcamos como "protected" para que puedan ser usados por las clases hijas.
+    protected String nombre; 
+    protected String fecha;
+    protected String estado;
+    // Hasta ahora hemos creado la clase con sus atributos.
 
- // Estos son los atributos comunes que tendrán todos los elementos agrícolas.
- // Los marcamos como "protected" para que puedan ser usados por las clases hijas, asi pueden acceder directamente a estos valores
- //Solo creamos el molde, 
- protected String nombre; 
- protected String fecha;
- protected String estado;
-//hasta ahora hemos creado la clase con sus atributos
+    // Este es el constructor.
+    // Este método se ejecuta automáticamente cuando se crea un objeto hijo de esta clase.
+    // Recibe 3 datos: nombre, fecha y estado, y los guarda dentro del objeto.
+    public ElementoAgricola(String nombre, String fecha, String estado) {
+        this.nombre = nombre;  // Guardar el nombre entregado en el atributo del objeto
+        this.fecha = fecha;    // Guardar la fecha entregada en el atributo del objeto
+        this.estado = estado;  // Guardar el estado entregado en el atributo del objeto
+    }
 
-// Este es el constructor.
- // Este método se ejecuta automáticamente cuando se crea un objeto hijo de esta clase.
-// Recibe 3 datos: nombre, fecha y estado, y los guarda dentro del objeto
-public ElementoAgricola(String nombre, String fecha, String estado) {
-    this.nombre = nombre; // Guardar el nombre entregado en el atributo del objeto
-    this.fecha = fecha; // Guardar la fecha entregada en el atributo del objeto
-    this.estado = estado; // Guardar el estado entregado en el atributo del objeto
-
-    //Estamos creando métodos que nos permiten leer los datos privados o protegidos del objeto.
+    // Estamos creando métodos que nos permiten leer los datos privados o protegidos del objeto.
 
     // Método público que permite obtener el nombre desde fuera del objeto
     public String getNombre() {

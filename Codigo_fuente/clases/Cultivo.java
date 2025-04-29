@@ -1,9 +1,3 @@
-package Codigo_fuente.clases;
-
-public class Cultivo {
-    
-}
-
 //Va a heredar de ElementoAgricola
 // Esta línea le indica a Java que esta clase pertenece al paquete (carpeta) Codigo_fuente.clases
 // Esto es importante para importar correctamente esta clase desde otros archivos.
