@@ -3,9 +3,13 @@ package Codigo_fuente;
 
 // Importamos las clases necesarias de nuestro proyecto
 import Codigo_fuente.clases.Actividad;
+import Codigo_fuente.clases.Cultivo;
+import Codigo_fuente.clases.Parcela;
 import Codigo_fuente.servicios.GestorDeCultivos;
 import Codigo_fuente.servicios.LectorCSV;
 
+import java.util.ArrayList;
+import java.util.List;
 // Importamos Scanner para leer datos que el usuario escriba
 import java.util.Scanner;
 
@@ -23,7 +27,12 @@ public class Principal {
 
         // Al iniciar el programa, leemos los cultivos guardados previamente en el archivo CSV
         // Esto permite que los cultivos antiguos estén disponibles aunque el programa se reinicie
-        LectorCSV.leerCultivosDesdeCSV(gestor.getListaCultivos(), "cultivo.csv");
+        List<Cultivo> lista = LectorCSV.leerCultivosDesdeCSV("cultivo.csv");
+        gestor.setListaCultivos(lista);
+        List<Parcela> listaParcela = new ArrayList<>();
+        for(Cultivo n: lista) {
+        	listaParcelas = new Parcela
+        }
 
         // Creamos una actividad de prueba, solo para mostrar cómo se vería
         Actividad miActividad = new Actividad("RIEGO", "2023-03-20", "COMPLETADA");

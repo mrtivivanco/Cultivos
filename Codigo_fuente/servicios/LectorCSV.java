@@ -8,6 +8,7 @@ import Codigo_fuente.clases.Cultivo;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 
@@ -53,7 +54,9 @@ public class LectorCSV {
 
     // Método que lee cultivos desde un archivo CSV
     // y los agrega a la lista proporcionada
-    public static void leerCultivosDesdeCSV(ArrayList<Cultivo> lista, String nombreArchivo) {
+    public static List<Cultivo> leerCultivosDesdeCSV(String nombreArchivo) {
+    	List<Cultivo> lista = new ArrayList<>();
+    	
         try {
             // Abrimos el archivo usando Scanner
             Scanner lector = new Scanner(new File(nombreArchivo));
@@ -85,10 +88,13 @@ public class LectorCSV {
                     // Lo agregamos a la lista
                     lista.add(cultivo);
                 }
+                
             }
+            
 
             // Cerramos el lector del archivo
             lector.close();
+            
 
             // Mensaje de éxito
             System.out.println("✅ Cultivos cargados desde el archivo " + nombreArchivo);
@@ -97,6 +103,7 @@ public class LectorCSV {
             // Si ocurre algún error al leer el archivo, lo informamos
             System.out.println("❌ Error al leer el archivo CSV: " + e.getMessage());
         }
+        return lista;
     }
 }
 

@@ -5,13 +5,14 @@ package Codigo_fuente.servicios;
 import Codigo_fuente.clases.Cultivo;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // Esta clase se encargará de gestionar los cultivos (agregarlos, listarlos, etc.)
 public class GestorDeCultivos {
 
     // Creamos una lista que almacenará todos los cultivos creados
-    private ArrayList<Cultivo> listaCultivos;
+    private List<Cultivo> listaCultivos;
 
     // Constructor: se ejecuta al crear un objeto de tipo GestorDeCultivos
     public GestorDeCultivos() {
@@ -68,7 +69,12 @@ public class GestorDeCultivos {
     }
 
     // (Opcional) Método para acceder a la lista desde fuera si se necesita
-    public ArrayList<Cultivo> getListaCultivos() {
+    public List<Cultivo> getListaCultivos() {
         return listaCultivos;
     }
+
+	public void setListaCultivos(List<Cultivo> listaCultivos) {
+		this.listaCultivos = listaCultivos;
+	}
+    
 }
