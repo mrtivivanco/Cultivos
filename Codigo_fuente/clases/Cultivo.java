@@ -3,6 +3,8 @@
 // Esto es importante para importar correctamente esta clase desde otros archivos.
 package Codigo_fuente.clases;
 
+import java.util.List;
+
 // Declaramos una nueva clase llamada "Cultivo".
 // La palabra "extends" significa que esta clase hereda de otra llamada "ElementoAgricola".
 // Eso quiere decir que "Cultivo" va a tener todos los atributos y métodos que tiene "ElementoAgricola".
@@ -20,6 +22,9 @@ public class Cultivo extends ElementoAgricola {
     // Por ejemplo: "PARCELA-A01"
     private String codigoParcela;
 
+    // Aquí guardamos la lista de actividades asociadas a este cultivo.
+    private List<Actividad> listaActividades;
+    
     // Este es el constructor de la clase Cultivo.
     // Se llama automáticamente cuando tú creas un nuevo cultivo desde otra parte del programa.
     // Ejemplo de uso: new Cultivo("Tomate", "2023-03-15", "EN_RIESGO", "Cherry", 10.0, "PARCELA-C02");
@@ -65,6 +70,17 @@ public class Cultivo extends ElementoAgricola {
     // Este método devuelve el código de la parcela
     public String getCodigoParcela() {
         return codigoParcela;
+    }
+
+	public List<Actividad> getListaActividades() {
+		return listaActividades;
+	}
+
+	public void setListaActividades(List<Actividad> listaActividades) {
+		this.listaActividades = listaActividades;
+	}
+    public void agregarActividad(Actividad actividad) {
+    	this.listaActividades.add(actividad);
     }
 }
 

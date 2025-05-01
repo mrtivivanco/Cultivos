@@ -1,17 +1,20 @@
 // Indicamos que esta clase pertenece al paquete Codigo_fuente
 package Codigo_fuente;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+// Importamos Scanner para leer datos que el usuario escriba
+import java.util.Scanner;
+
 // Importamos las clases necesarias de nuestro proyecto
 import Codigo_fuente.clases.Actividad;
 import Codigo_fuente.clases.Cultivo;
 import Codigo_fuente.clases.Parcela;
 import Codigo_fuente.servicios.GestorDeCultivos;
+import Codigo_fuente.servicios.GestorDeParcelas;
 import Codigo_fuente.servicios.LectorCSV;
-
-import java.util.ArrayList;
-import java.util.List;
-// Importamos Scanner para leer datos que el usuario escriba
-import java.util.Scanner;
 
 // Esta es la clase principal de nuestro programa
 public class Principal {
@@ -29,10 +32,23 @@ public class Principal {
         // Esto permite que los cultivos antiguos estén disponibles aunque el programa se reinicie
         List<Cultivo> lista = LectorCSV.leerCultivosDesdeCSV("cultivo.csv");
         gestor.setListaCultivos(lista);
-        List<Parcela> listaParcela = new ArrayList<>();
+        
+        
+        GestorDeParcelas gestorParcelas = new GestorDeParcelas();
+        
+        // Se van a crear todas las parcelas que existen
+        Map<String, Parcela> mapaParcelas = new HashMap<>();
         for(Cultivo n: lista) {
-        	listaParcelas = new Parcela
+        	Parcela parcela = mapaParcelas.get(n.getCodigoParcela());
+        	if(parcela == null) {
+        		parcela = new Parcela(n.getCodigoParcela());
+        		mapaParcelas.put(n.getCodigoParcela(), parcela);
+        	}
+        	parcela.agregarCultivo(n);
         }
+        List<Parcela> listaParcelas = new ArrayList<>(mapaParcelas.values());
+        gestorParcelas.setListaParcelas(listaParcelas);
+        
 
         // Creamos una actividad de prueba, solo para mostrar cómo se vería
         Actividad miActividad = new Actividad("RIEGO", "2023-03-20", "COMPLETADA");
