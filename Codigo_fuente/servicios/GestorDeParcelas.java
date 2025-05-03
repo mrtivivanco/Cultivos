@@ -33,13 +33,23 @@ public class GestorDeParcelas {
         listaParcelas.add(nueva);
         return true;
     }
-
-    // Método para listar parcelas
-    public void listarParcelas() {
-        if(listaParcelas.isEmpty()) {
-            System.out.println("\nNo hay parcelas registradas");
-            return;
+	
+        // Método para buscar parcela
+        public Parcela buscarParcela(String codigo) {
+            for(Parcela p : listaParcelas) {
+                if(p.getCodigoParcela().equalsIgnoreCase(codigo)) {
+                    return p;
+                }
+            }
+            return null;
         }
+	
+        // Método para listar parcelas
+        public void listarParcelas() {
+            if(listaParcelas.isEmpty()) {
+                System.out.println("\nNo hay parcelas registradas");
+                return;
+            }
 
         System.out.println("\n=== Listado de Parcelas ===");
         for(Parcela p : listaParcelas) {
