@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+//La clase parcela repreenta una parcela agrícola donde se cultivan los cultivos. 
 public class Parcela {
+	//Código que ifentifica la parcela. Valor por defecto "123"
 	private String codigoParcela = "123";
+	//Lista de cultivos de la parcela
 	private List<Cultivo> listaCultivos = new ArrayList<>();
 	
 	
