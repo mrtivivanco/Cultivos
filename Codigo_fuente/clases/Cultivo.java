@@ -3,7 +3,9 @@
 // Esto es importante para importar correctamente esta clase desde otros archivos.
 package Codigo_fuente.clases;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Declaramos una nueva clase llamada "Cultivo".
 // La palabra "extends" significa que esta clase hereda de otra llamada "ElementoAgricola".
@@ -23,7 +25,7 @@ public class Cultivo extends ElementoAgricola {
     private String codigoParcela;
 
     // Aquí guardamos la lista de actividades asociadas a este cultivo.
-    private List<Actividad> listaActividades;
+    private List<Actividad> listaActividades = new ArrayList<>();
     
     // Este es el constructor de la clase Cultivo.
     // Se llama automáticamente cuando tú creas un nuevo cultivo desde otra parte del programa.
@@ -82,5 +84,38 @@ public class Cultivo extends ElementoAgricola {
     public void agregarActividad(Actividad actividad) {
     	this.listaActividades.add(actividad);
     }
+
+	public void setVariedad(String variedad) {
+		this.variedad = variedad;
+	}
+
+	public void setSuperficie(double superficie) {
+		this.superficie = superficie;
+	}
+
+	public void setCodigoParcela(String codigoParcela) {
+		this.codigoParcela = codigoParcela;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre, variedad, codigoParcela);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cultivo other = (Cultivo) obj;
+		return Objects.equals(codigoParcela, other.codigoParcela) &&
+				Objects.equals(nombre,  other.nombre) && 
+				Objects.equals(variedad, other.variedad) &&
+				Objects.equals(superficie, other.superficie);
+	}
+    
 }
 

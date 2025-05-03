@@ -42,7 +42,19 @@ public abstract class ElementoAgricola {
         return estado;  // Devuelve el valor del atributo "estado"
     }
 
-    // Método abstracto: no tiene cuerpo aquí, solo se declara.
+    public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	// Método abstracto: no tiene cuerpo aquí, solo se declara.
     // Obliga a las clases hijas a escribir su propia versión de este método.
     public abstract void mostrarInfo();  // Mostrar información detallada del elemento agrícola
 }

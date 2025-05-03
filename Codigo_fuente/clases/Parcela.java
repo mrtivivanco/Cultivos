@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Parcela {
 	//Código que ifentifica la parcela.
 	//Valor por defecto "123"
-	private String codigoParcela = "123";
+	private String codigoParcela = "";
 	//Lista de cultivos asociados a la parcela
 	private List<Cultivo> listaCultivos = new ArrayList<>();
 	

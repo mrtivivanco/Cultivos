@@ -1,23 +1,22 @@
 // Indicamos que esta clase está en el paquete "servicios"
 package Codigo_fuente.servicios;
 
+import java.io.File;
+// Importamos clases de Java necesarias para leer y escribir archivos
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import Codigo_fuente.clases.Actividad;
 // Importamos la clase Cultivo para poder crear objetos Cultivo
 import Codigo_fuente.clases.Cultivo;
 
-// Importamos clases de Java necesarias para leer y escribir archivos
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-import java.io.File;
-
 // Esta clase se encarga de manejar archivos CSV
-public class LectorCSV {
-
+public class LectorEscritorCSV {
+	static DecimalFormat formato = new DecimalFormat("#.0#");
 	// Método que guarda todos los cultivos en un archivo CSV
 	// Recibe la lista de cultivos y el nombre del archivo
 	public static void guardarCultivosEnCSV(List<Cultivo> lista, String nombreArchivo) {
@@ -43,8 +42,8 @@ public class LectorCSV {
 				actividades = actividades + "]";
 				
 				// Se formatea la línea asociado al cultivo
-				String linea = String.format("Cultivo,\"%s\",\"%s\",%3.1f,\"%s\",\"%s\",\"%s\",%s", cultivo.getNombre(),
-						cultivo.getVariedad(), cultivo.getSuperficie(), cultivo.getCodigoParcela(),
+				String linea = String.format("Cultivo,\"%s\",\"%s\",%s,\"%s\",\"%s\",\"%s\",%s\n", cultivo.getNombre(),
+						cultivo.getVariedad(), formato.format(cultivo.getSuperficie()), cultivo.getCodigoParcela(),
 						cultivo.getFecha(), cultivo.getEstado(), actividades
 
 				);
@@ -61,6 +60,7 @@ public class LectorCSV {
 
 		} catch (IOException e) {
 			// Si ocurre un error al guardar, mostramos un mensaje
+			e.printStackTrace();
 			System.out.println("❌ Error al guardar los cultivos: " + e.getMessage());
 		}
 	}
