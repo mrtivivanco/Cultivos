@@ -37,7 +37,7 @@ public class Parcela {
 		this.listaCultivos = listaCultivos;
 	}
 
-	Devuelve el código identificador de la parcela 
+	//Devuelve el código identificador de la parcela 
 	public String getCodigoParcela() {
 		return codigoParcela;
 	}
