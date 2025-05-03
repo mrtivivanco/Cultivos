@@ -37,9 +37,11 @@ public class MenuPrincipal {
                     break;
                 case 2: //Crear nuevo cultivo
                     gestorCultivos.crearCultivo();
+                    System.out.println("Cultivo creado exitosamente!");
                     break;
                 case 3: //Eliminar cultivo
                     gestorCultivos.eliminarCultivo();
+                    System.out.println("Cultivo eliminado exitosamente!");
                     break;
                 case 4: //Editar cultivo
                     gestorCultivos.editarCultivo();
@@ -49,9 +51,11 @@ public class MenuPrincipal {
                     break;
                 case 6: //Agragar parcelas
                     gestorParcelas.agregarParcela();
+                    System.out.println("Parcela creado exitosamente!");
                     break;
                 case 7: //Eliminar parcelas
                     gestorParcelas.eliminarParcela();
+                    System.out.println("Parcela eliminada exitosamente!");
                     break;
                 case 8: //Editar parcelas
                     gestorParcelas.editarParcela();
