@@ -76,5 +76,129 @@ public class GestorDeCultivos {
 	public void setListaCultivos(List<Cultivo> listaCultivos) {
 		this.listaCultivos = listaCultivos;
 	}
-    
+
+    // Método para eliminar un cultivo
+    public boolean eliminarCultivo(Scanner scanner) {
+        if(listaCultivos.isEmpty()) {
+            System.out.println("No hay cultivos para eliminar.");
+            return false;
+        }
+
+        listarCultivos();
+        System.out.print("\nIngrese el número del cultivo a eliminar: ");
+        
+        try {
+            int index = Integer.parseInt(scanner.nextLine()) - 1;
+            
+            if(index < 0 || index >= listaCultivos.size()) {
+                throw new IndexOutOfBoundsException("Número de cultivo inválido");
+            }
+            
+            Cultivo aEliminar = listaCultivos.get(index);
+            System.out.print("¿Está seguro de eliminar el cultivo " + aEliminar.getNombre() 
+                + "? (S/N): ");
+            String confirmacion = scanner.nextLine();
+            
+            if(confirmacion.equalsIgnoreCase("S")) {
+                listaCultivos.remove(index);
+                System.out.println("✅ Cultivo eliminado exitosamente.");
+                return true;
+            } else {
+                System.out.println("Operación cancelada.");
+                return false;
+            }
+            
+        } catch (NumberFormatException e) {
+            System.out.println("❌ Error: Debe ingresar un número válido");
+            return false;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("❌ Error: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // Método para editar un cultivo existente
+    public boolean editarCultivo(Scanner scanner) {
+        if(listaCultivos.isEmpty()) {
+            System.out.println("No hay cultivos para editar.");
+            return false;
+        }
+
+        listarCultivos();
+        System.out.print("\nIngrese el número del cultivo a editar: ");
+        
+        try {
+            int index = Integer.parseInt(scanner.nextLine()) - 1;
+            
+            if(index < 0 || index >= listaCultivos.size()) {
+                throw new IndexOutOfBoundsException("Número de cultivo inválido");
+            }
+            
+            Cultivo cultivo = listaCultivos.get(index);
+            System.out.println("\nEditando cultivo: " + cultivo.getNombre());
+            System.out.println("(Deje en blanco para mantener el valor actual)\n");
+            
+            // Editar nombre
+            System.out.print("Nombre [" + cultivo.getNombre() + "]: ");
+            String nuevoNombre = scanner.nextLine();
+            if(!nuevoNombre.trim().isEmpty()) {
+                cultivo.setNombre(nuevoNombre);
+            }
+            
+            // Editar fecha
+            System.out.print("Fecha de siembra [" + cultivo.getFecha() + "]: ");
+            String nuevaFecha = scanner.nextLine();
+            if(!nuevaFecha.trim().isEmpty()) {
+                if(!nuevaFecha.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    throw new IllegalArgumentException("Formato de fecha inválido");
+                }
+                cultivo.setFecha(nuevaFecha);
+            }
+            
+            // Editar estado
+            System.out.print("Estado [" + cultivo.getEstado() + "]: ");
+            String nuevoEstado = scanner.nextLine();
+            if(!nuevoEstado.trim().isEmpty()) {
+                if(!nuevoEstado.toUpperCase().matches("ACTIVO|EN_RIESGO|COSECHADO")) {
+                    throw new IllegalArgumentException("Estado inválido");
+                }
+                cultivo.setEstado(nuevoEstado.toUpperCase());
+            }
+            
+            // Editar variedad
+            System.out.print("Variedad [" + cultivo.getVariedad() + "]: ");
+            String nuevaVariedad = scanner.nextLine();
+            if(!nuevaVariedad.trim().isEmpty()) {
+                cultivo.setVariedad(nuevaVariedad);
+            }
+            
+            // Editar superficie
+            System.out.print("Superficie [" + cultivo.getSuperficie() + "]: ");
+            String nuevaSuperficieStr = scanner.nextLine();
+            if(!nuevaSuperficieStr.trim().isEmpty()) {
+                double nuevaSuperficie = Double.parseDouble(nuevaSuperficieStr);
+                if(nuevaSuperficie <= 0) {
+                    throw new IllegalArgumentException("La superficie debe ser mayor a 0");
+                }
+                cultivo.setSuperficie(nuevaSuperficie);
+            }
+            
+            // Editar parcela
+            System.out.print("Código de parcela [" + cultivo.getCodigoParcela() + "]: ");
+            String nuevoCodigoParcela = scanner.nextLine();
+            if(!nuevoCodigoParcela.trim().isEmpty()) {
+                cultivo.setCodigoParcela(nuevoCodigoParcela);
+            }
+            
+            System.out.println("✅ Cultivo actualizado exitosamente.");
+            return true;
+            
+        } catch (NumberFormatException e) {
+            System.out.println("❌ Error: Debe ingresar un número válido");
+            return false;
+        } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
+            System.out.println("❌ Error: " + e.getMessage());
+            return false;
+        }
+    }
 }
