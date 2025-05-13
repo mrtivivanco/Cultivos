@@ -1,0 +1,3 @@
+@echo off
+echo Ejecutando programa...
+java -cp out  Codigo_fuente.Interfaz.MenuPrincipal

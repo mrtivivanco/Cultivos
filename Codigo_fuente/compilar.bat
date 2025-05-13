@@ -1,0 +1,3 @@
+@echo off
+echo Compilando clases...
+javac -d out @sources.txt
